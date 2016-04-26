@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'img/madhatstrategies-icon.ico' %}">
+    <title>madhat strategies</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{%static 'css/blog.css' %}" rel="stylesheet">
+  </head>
+  <body>
+  <div class='container' style='text-align:center;'>
+  <h1> &nbsp; </h1>
+  <img src= "{% static 'img/madhatstrategies-logo.jpg' %}" width="300" height="350" align="middle" />
+  <h1> &nbsp; </h1>
+  <h1>  </h1>  
+  <h2 class="form-signin-heading">Sign in</h2>
+    <div class="container">
+    <form method="post" action=".?next={{ redirect_to }}"> {% csrf_token %}
+    <input type="text" name="username" placeholder="Username"/>
+    <input type="password" name="password" placeholder="Password"/>
+    <input type="submit" value="Login"/>
+	</form>
+  <div class='container'>
+  {% if messages %}
+  <div class ='row'>
+    <div class='col-xs-12'>
+</div>
+    {% for message in messages %}
+    <p class='message' style="text-align:middle;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+
+</div>
+{% endif %}
+    </div> <!-- /container -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>
