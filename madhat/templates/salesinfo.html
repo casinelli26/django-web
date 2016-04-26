@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+<form method="POST" action=".?next={{ redirect_to }}"> {% csrf_token %}
+<table>
+{{ form.as_table }}
+</table>
+<input type="submit" value="Add Account" class="b1" style='align-self: center;' />
+<div class="container" style='text-align:left;'>
+</form>
+
+  <h2 class="sub-header">Salesperson Info</h2>
+  <div class="table-responsive" id='table'>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Account Name</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+<tbody>
+<tr>
+{% for obj in salesaccount_info %}
+
+<td><span class='name'>{{obj.account_name}}</span></td>
+<td><span class='date'>{{obj.updated}}</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+{% endblock %}

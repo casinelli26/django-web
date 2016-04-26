@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+
+<form method="POST" action=""> {% csrf_token %}
+<table>
+{{ form.as_table }}
+</table>
+<input type="submit" value="Add Salesperson" class="b1" style='align-self: center;' />
+<div class="container" style='text-align:left;'>
+</form>
+
+  <h2 class="sub-header">Salesperson Info</h2>
+  <div class="table-responsive" id='table'>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date Added</th>
+        </tr>
+      </thead>
+
+<tbody>
+<tr>
+{% for name in salesperson_info %}
+<td><span class='name'><a href="{{name.id}}">{{name.first_name}} {{name.last_name}}</a></span></td>
+<td><span class='date'>{{name.date_added}}</span></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}
