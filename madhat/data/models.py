@@ -7,8 +7,8 @@ class SalesPerson(models.Model):
 	first_name = models.CharField(max_length=20)
 	last_name = models.CharField(max_length=20, default=None)
 	id = models.AutoField(primary_key=True)
-	date_added = models.DateTimeField(auto_now_add = True, auto_now=False)
-	updated = models.DateTimeField(auto_now_add = False, auto_now=True)
+	date_added = models.DateTimeField(auto_now_add= True, auto_now=False)
+	updated = models.DateTimeField(auto_now_add= False, auto_now=True)
 	def __unicode__(self):
 		return self.first_name
 
@@ -21,6 +21,6 @@ class SalesPerson(models.Model):
 
 class SalesAccounts(models.Model):
 	account_name = models.CharField(max_length=100)
-	date_added = models.DateTimeField(auto_now_add= True, auto_now=False)
+	date_added = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now_add= False, auto_now=True)
-	lead_sales_person = models.ForeignKey(SalesPerson)
+	lead_sales_person = models.ForeignKey(SalesPerson, related_name='name')

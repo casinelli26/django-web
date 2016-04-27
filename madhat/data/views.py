@@ -17,13 +17,24 @@ def Sales(request):
 	template = 'sales.html'
 	return render(request, template, context)
 
-@login_required
-def SalesInfo(request,id):
+# @login_required
+# def SalesInfo(request,id):
+# 	form = SalesAccountsForm(request.POST or None)
+# 	if form.is_valid():
+# 		new_account = form.save(commit=True)
+# 		return HttpResponseRedirect('/sales/' + id)
+# 	salesaccount_info = SalesAccounts.objects.order_by('updated')
+# 	salesperson_info = SalesPerson.objects.order_by('date_added')
+# 	context = {'form':form, 'salesaccount_info':salesaccount_info, 'salesperson_info':salesperson_info}
+# 	template = 'salesinfo.html'
+# 	return render(request,template,context)
+
+def SalesDetail(request,id):
 	form = SalesAccountsForm(request.POST or None)
 	if form.is_valid():
 		new_account = form.save(commit=True)
 		return HttpResponseRedirect('/sales/' + id)
-	salesaccount_info = SalesAccounts.objects.order_by('updated')
+	salesaccount_info = SalesAccounts.objects.all().filter(id=id)
 	context = {'form':form, 'salesaccount_info':salesaccount_info}
 	template = 'salesinfo.html'
 	return render(request,template,context)

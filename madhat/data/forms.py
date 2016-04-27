@@ -9,4 +9,4 @@ class SalesPersonForm(forms.ModelForm):
 class SalesAccountsForm(forms.ModelForm):
 	class Meta:
 		model = SalesAccounts
-		fields = ['account_name']
+		fields = ['account_name', 'lead_sales_person', 'id']
